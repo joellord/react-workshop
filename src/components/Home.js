@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import store from "../utils/Store";
-import { getMessages } from "../utils/MessagesAPI";
+import Auth from "../utils/Auth";
 
 export default class Home extends Component {
   constructor(props) {
@@ -8,11 +8,12 @@ export default class Home extends Component {
 
     this.state = store.getGlobalState();
 
+    this.auth = new Auth();
     this.login = this.login.bind(this);
   }
 
   login() {
-    this.props.history.push("/inbox");
+    this.auth.login();
   };
 
   render() {

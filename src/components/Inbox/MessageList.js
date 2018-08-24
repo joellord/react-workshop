@@ -34,7 +34,7 @@ export default class MessageList extends Component {
   render() {
     const messages = this.state.messages.map(msg => {
       return (
-          <MessageSummary {...msg} />
+          <MessageSummary {...msg} key={msg.id} />
       )
     });
 

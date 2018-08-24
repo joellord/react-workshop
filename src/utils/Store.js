@@ -17,6 +17,10 @@ class Store extends Emitter {
     return state;
   }
 
+  getTokens() {
+    return state.tokens;
+  }
+
   subscribe(cb) {
     this.on("stateChange", cb);
   }

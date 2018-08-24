@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^1.5.1",
+    "auth0-js": "^9.7.3",
     "es6-event-emitter": "^1.10.2",
     "react": "^16.4.2",
     "react-bootstrap": "^0.32.3",

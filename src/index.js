@@ -8,7 +8,14 @@ import store from "./utils/Store";
 store.updateGlobalState({
   isLoggedIn: false,
   messages: [],
-  message: {}
+  message: {},
+  to: "",
+  subject: "",
+  tokens: {
+    accessToken: "",
+    idToken: "",
+    expiresAt: 0
+  }
 });
 
 ReactDOM.render(<App />, document.getElementById('root'));
