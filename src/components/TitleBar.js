@@ -41,7 +41,6 @@ class TitleBar extends Component {
           <div className="text-right">
             <Link to="/new">Send message</Link> |
             <button onClick={this.logout}>Logout</button>
-            { this.state.tokens.accessToken }
           </div>
         </div>
       </div>

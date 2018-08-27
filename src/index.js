@@ -15,7 +15,9 @@ store.updateGlobalState({
     accessToken: "",
     idToken: "",
     expiresAt: 0
-  }
+  },
+  users: [],
+  sending: false
 });
 
 ReactDOM.render(<App />, document.getElementById('root'));

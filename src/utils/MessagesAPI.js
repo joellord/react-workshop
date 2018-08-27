@@ -50,7 +50,7 @@ const getMessage = (id) => {
   // const message = messageDB.find((msg) => msg.id.toString() === id.toString());
   // store.updateGlobalState({message});
   let tokens = store.getTokens();
-  fetch(`${API_URL}/${id}`, {
+  return fetch(`${API_URL}/${id}`, {
     headers: {"Authorization": `Bearer ${tokens.accessToken}`}
   }).then(resp => resp.json()).then(data => {
     store.updateGlobalState({message: data});
@@ -68,7 +68,7 @@ const updateMessage = (id, data) => {
   // });
   // store.updateGlobalState({messages});
   let tokens = store.getTokens();
-  fetch(`${API_URL}/${id}`, {
+  return fetch(`${API_URL}/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -77,11 +77,47 @@ const updateMessage = (id, data) => {
     body: JSON.stringify(data)
   }).then(resp => resp.json()).then(data => {
     store.updateGlobalState({messages: data});
+    return data
   });
+};
+
+const markAsUnread = (id) => {
+  return updateMessage(id, {unread: true});
+};
+
+const getUsers = () => {
+  let tokens = store.getTokens();
+  fetch(`${API_URL}/users`, {
+    headers: {"Authorization": `Bearer ${tokens.accessToken}`}
+  }).then(resp => resp.json()).then(data => {
+    store.updateGlobalState({users: data});
+  });
+};
+
+const sendMessage = (to, subject) => {
+  let tokens = store.getTokens();
+  return fetch(`${API_URL}/send`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${tokens.accessToken}`
+    },
+    body: JSON.stringify({to, subject})
+  }).then(resp => resp.json()).then(data => {
+    store.updateGlobalState({sending: false});
+  });
+};
+
+const archive = id => {
+  return updateMessage(id, {archive: true});
 };
 
 export {
   getMessages,
   getMessage,
-  updateMessage
+  updateMessage,
+  markAsUnread,
+  getUsers,
+  sendMessage,
+  archive
 }
