@@ -17,7 +17,8 @@ store.updateGlobalState({
     expiresAt: 0
   },
   users: [],
-  sending: false
+  sending: false,
+  messageLoading: false
 });
 
 ReactDOM.render(<App />, document.getElementById('root'));

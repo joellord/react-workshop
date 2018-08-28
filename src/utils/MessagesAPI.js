@@ -50,10 +50,12 @@ const getMessage = (id) => {
   // const message = messageDB.find((msg) => msg.id.toString() === id.toString());
   // store.updateGlobalState({message});
   let tokens = store.getTokens();
+  store.updateGlobalState({messageLoading: true});
+
   return fetch(`${API_URL}/${id}`, {
     headers: {"Authorization": `Bearer ${tokens.accessToken}`}
   }).then(resp => resp.json()).then(data => {
-    store.updateGlobalState({message: data});
+    store.updateGlobalState({message: data, messageLoading: false});
   });
 };
 

@@ -57,15 +57,43 @@ export default class MessageDetails extends Component {
   render(match) {
     return (
         <div>
-          Message details<br/>
-          Id: {this.state.message.id}<br/>
-          From: {this.state.message.from}<br/>
-          Subject: {this.state.message.subject}<br/>
-          <hr/>
-          <GifViewer {...this.state.message.content} />
-          <hr/>
-          <button type="button" onClick={this.markAsUnread}>Mark As Unread</button>
-          <button type="button" onClick={this.archive}>Archive</button>
+          { !this.state.messageLoading && 
+            <div className="row">
+              <div className="col-12">
+                <h3>Message details</h3>
+                <div className="message-headers">
+                  <div className="row">
+                    <div className="col-4">Id</div><div className="col-8">{this.state.message.id}</div>
+                  </div>
+                  <div className="row">
+                    <div className="col-4">From</div><div className="col-8">{this.state.message.from}</div>
+                  </div>
+                  <div className="row">
+                    <div className="col-4">Subject</div><div className="col-8">{this.state.message.subject}</div>
+                  </div>
+                </div>
+
+                <hr/>
+                <div className="row">
+                  <div className="col-12">
+                    <GifViewer {...this.state.message.content} />
+                  </div>
+                </div>
+
+                <hr/>
+                <div className="row">
+                  <div className="col-12">
+                    <button type="button" onClick={this.markAsUnread}>Mark As Unread</button>
+                    <button type="button" onClick={this.archive}>Archive</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+
+          { this.state.messageLoading && 
+            <h2>Loading...</h2>
+          }
         </div>
     )
   }

@@ -35,7 +35,7 @@ export default class Auth {
     this.tokens.accessToken = authResult.accessToken;
     this.tokens.idToken = authResult.idToken;
     this.tokens.expiresAt = expiresAt;
-    store.updateGlobalState({tokens: this.tokens});
+    store.updateGlobalState({tokens: this.tokens, isLoggedIn: true});
     if (DEV_ENV) {
       localStorage.setItem("tokens", JSON.stringify(this.tokens));
     }
@@ -43,7 +43,7 @@ export default class Auth {
 
   logout() {
     this.tokens = {};
-    store.updateGlobalState({tokens: {}});
+    store.updateGlobalState({tokens: {}, isLoggedIn: false});
     if (DEV_ENV) {
       localStorage.removeItem("tokens");
     }

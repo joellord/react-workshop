@@ -13,10 +13,10 @@ export default class Inbox extends Component {
     return (
       <div className="container inbox" style={{border: '1px red'}}>
         <div className="row">
-          <div className="col-4">
+          <div className="col-4 h-100 scrollable">
             <MessageList></MessageList>
           </div>
-          <div className="col-8">
+          <div className="col-8 h-100 scrollable">
             <Route
                 path={this.props.match.url + '/:id'}
                 component={MessageDetails}
