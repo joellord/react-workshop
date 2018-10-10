@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>From Zero to App</title>
+</head>
+<body>
+<div id="app"></div>
+
+<script src="https://cdn.jsdelivr.net/react/0.14.0-rc1/react.js"></script>
+<script src="https://cdn.jsdelivr.net/react/0.14.0-rc1/react-dom.js"></script>
+
+<script type="text/javascript">
+
+  var searchEngines = [
+    {name: "Google", url: "https://www.google.com"},
+    {name: "Yahoo!", url: "https://www.yahoo.com"}
+  ];
+
+  var rootEl = React.createElement("div", {},
+      "Hello World!",
+      React.createElement("ul", {},
+          searchEngines.map((searchEngine) => {
+            return React.createElement("li", {},
+              React.createElement("a", {href: searchEngine.url}, searchEngine.name)
+            );
+          })
+      )
+  );
+
+  ReactDOM.render(rootEl, document.querySelector("#app"));
+
+</script>
+</body>
+</html>
