@@ -2,7 +2,7 @@ require("./main.scss");
 
 import ReactDOM from "react-dom";
 import React from "react";
-import Hello from "./components/Hello";
+import Counter from "./components/Counter";
 
-ReactDOM.render(<Hello name="Joel" />, document.getElementById("react-app"));
+ReactDOM.render(<Counter />, document.getElementById("react-app"));
 
