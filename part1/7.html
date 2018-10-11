@@ -30,7 +30,7 @@ let setState = (changes) => {
   Object.assign(state, changes);
 
   ReactDOM.render(
-    React.createElement(Counter, {}),
+    React.createElement(Counter, state),
     document.querySelector("#app")
   );
 };
